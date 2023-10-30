@@ -210,5 +210,3 @@ public class Tienda extends JFrame implements ActionListener {
 		d.setLocationRelativeTo(this);
 	}
 }
-
-//HOLA, se ve¿
