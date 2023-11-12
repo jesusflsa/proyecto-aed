@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import arreglos.ArregloVendedores;
+
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,6 +26,14 @@ public class Tienda extends JFrame implements ActionListener {
 	private JMenu mnReportes;
 	private JMenuItem mntmReporteProductos;
 	private JMenu mnVentas;
+
+	private JMenuItem mntmProductos;
+	private JMenuItem mntmVendedores;
+	private JMenuItem mntmVender;
+	private JMenuItem mntmReporteVendedores;
+	private JMenuItem mntmReportePorVendedor;
+	private JMenuItem mntmReportePorProducto;
+	private JMenuItem mntmReportePrecios;
 
 	public static void main(String[] args) {
 		try {
@@ -112,14 +123,6 @@ public class Tienda extends JFrame implements ActionListener {
 		contentPane.setLayout(null);
 	}
 
-	private JMenuItem mntmProductos;
-	private JMenuItem mntmVendedores;
-	private JMenuItem mntmVender;
-	private JMenuItem mntmReporteVendedores;
-	private JMenuItem mntmReportePorVendedor;
-	private JMenuItem mntmReportePorProducto;
-	private JMenuItem mntmReportePrecios;
-
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == mntmReportePrecios) {
 			actionPerformedMntmReportePrecios(e);
@@ -149,6 +152,8 @@ public class Tienda extends JFrame implements ActionListener {
 			actionPerformedMntmVendedores(e);
 		}
 	}
+
+	public static ArregloVendedores VENDEDORES = new ArregloVendedores();
 
 	protected void actionPerformedMntmVendedores(ActionEvent e) {
 		DialogoVendedores d = new DialogoVendedores();
