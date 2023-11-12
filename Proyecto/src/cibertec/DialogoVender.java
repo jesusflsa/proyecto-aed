@@ -14,9 +14,15 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DialogoVender extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private TextArea textArea;
 	private JLabel lblCodigoDeVenta;
@@ -53,6 +59,7 @@ public class DialogoVender extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public DialogoVender() {
 		setTitle("Vender");
 		setBounds(100, 100, 810, 497);
@@ -65,24 +72,24 @@ public class DialogoVender extends JDialog {
 		textArea.setBounds(10, 115, 774, 333);
 		contentPanel.add(textArea);
 		
-		lblCodigoDeVenta = new JLabel("CODIGO DE VENTA:");
+		lblCodigoDeVenta = new JLabel("C\u00F3digo de venta");
 		lblCodigoDeVenta.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCodigoDeVenta.setBounds(10, 11, 148, 14);
+		lblCodigoDeVenta.setBounds(10, 11, 148, 17);
 		contentPanel.add(lblCodigoDeVenta);
 		
-		lblCodigoDeCliente = new JLabel("CODIGO DE CLIENTE");
+		lblCodigoDeCliente = new JLabel("C\u00F3digo de cliente");
 		lblCodigoDeCliente.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCodigoDeCliente.setBounds(10, 36, 148, 14);
+		lblCodigoDeCliente.setBounds(10, 36, 148, 18);
 		contentPanel.add(lblCodigoDeCliente);
 		
-		lblCodigoDeProducto = new JLabel("CODIGO DE PRODUCTO:");
+		lblCodigoDeProducto = new JLabel("C\u00F3digo de producto");
 		lblCodigoDeProducto.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCodigoDeProducto.setBounds(10, 61, 164, 14);
+		lblCodigoDeProducto.setBounds(10, 61, 164, 19);
 		contentPanel.add(lblCodigoDeProducto);
 		
-		lblCantidad = new JLabel("CANTIDAD:");
+		lblCantidad = new JLabel("Cantidad");
 		lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCantidad.setBounds(10, 87, 148, 14);
+		lblCantidad.setBounds(10, 87, 148, 18);
 		contentPanel.add(lblCantidad);
 		
 		txtCodigoDeVenta = new JTextField();
@@ -98,28 +105,36 @@ public class DialogoVender extends JDialog {
 		contentPanel.add(txtCantidad);
 		
 		cboCodigoDeProducto = new JComboBox();
-		cboCodigoDeProducto.setModel(new DefaultComboBoxModel(new String[] {"3001"}));
+		cboCodigoDeProducto.setModel(new DefaultComboBoxModel(new String[] {"3001", "3002", "3003", "3004", "3005"}));
 		cboCodigoDeProducto.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		cboCodigoDeProducto.setBounds(177, 59, 173, 22);
 		contentPanel.add(cboCodigoDeProducto);
 		
 		cboCodigoDeCliente = new JComboBox();
 		cboCodigoDeCliente.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		cboCodigoDeCliente.setModel(new DefaultComboBoxModel(new String[] {"1001"}));
+		cboCodigoDeCliente.setModel(new DefaultComboBoxModel(new String[] {"1001", "1002", "1003", "1004", "1005"}));
 		cboCodigoDeCliente.setBounds(177, 32, 173, 22);
 		contentPanel.add(cboCodigoDeCliente);
 		
-		btnAceptar = new JButton("ACEPTAR");
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAceptar.setBounds(364, 6, 104, 23);
 		contentPanel.add(btnAceptar);
 		
-		btnNuevo = new JButton("NUEVO");
+		btnNuevo = new JButton("Nuevo");
 		btnNuevo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNuevo.setBounds(675, 9, 104, 23);
 		contentPanel.add(btnNuevo);
 		
-		btnLimpiar = new JButton("LIMPIAR");
+		btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnLimpiar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnLimpiar.setBounds(677, 41, 104, 23);
 		contentPanel.add(btnLimpiar);

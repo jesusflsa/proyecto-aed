@@ -9,29 +9,33 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
-import java.awt.TextArea;
 import javax.swing.UIManager;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
 
 public class DialogoClientes extends JDialog implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lblCodigo;
 	private JLabel lblNombres;
 	private JLabel lblApellidos;
-	private JLabel lblDireccion;
 	private JLabel lblTelefono;
 	private JLabel lblDni;
 	private JButton btnIngreso;
 	private JButton btnModificacion;
 	private JButton btnConsulta;
-	private JButton btnEliminacion;
 	private JButton btnListado;
 	private JTextField txtApellidos;
-	private JTextField txtDireccion;
 	private JTextField txtNombres;
 	private JTextField txtCodigo;
 	private JTextField txtTelefono;
 	private JTextField txtDNI;
 	private JButton btnAceptar;
-	private TextArea txtS;
+	private DefaultTableModel modelo;
+	private JTable tblTabla;
 
 	/**
 	 * Launch the application.
@@ -61,63 +65,52 @@ public class DialogoClientes extends JDialog implements ActionListener {
 	 */
 	public DialogoClientes() {
 		setTitle("Clientes");
-		setBounds(100, 100, 698, 667);
+		setBounds(100, 100, 698, 442);
 		getContentPane().setLayout(null);
 		
-		lblCodigo = new JLabel("C\u00D3DIGO:");
+		lblCodigo = new JLabel("C\u00F3digo:");
 		lblCodigo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCodigo.setBounds(10, 11, 57, 14);
+		lblCodigo.setBounds(10, 11, 57, 23);
 		getContentPane().add(lblCodigo);
 		
-		lblNombres = new JLabel("NOMBRES:");
+		lblNombres = new JLabel("Nombres:");
 		lblNombres.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNombres.setBounds(10, 38, 81, 14);
 		getContentPane().add(lblNombres);
 		
-		lblApellidos = new JLabel("APELLIDOS:");
+		lblApellidos = new JLabel("Apellidos:");
 		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblApellidos.setBounds(10, 63, 81, 14);
+		lblApellidos.setBounds(10, 63, 81, 19);
 		getContentPane().add(lblApellidos);
 		
-		lblDireccion = new JLabel("DIRECCI\u00D3N:");
-		lblDireccion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDireccion.setBounds(10, 88, 81, 14);
-		getContentPane().add(lblDireccion);
-		
-		lblTelefono = new JLabel("TELEFONO:");
+		lblTelefono = new JLabel("Telef\u00F3no:");
 		lblTelefono.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTelefono.setBounds(10, 114, 81, 14);
+		lblTelefono.setBounds(10, 88, 81, 14);
 		getContentPane().add(lblTelefono);
 		
 		lblDni = new JLabel("DNI:");
 		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDni.setBounds(10, 139, 67, 14);
+		lblDni.setBounds(10, 113, 67, 14);
 		getContentPane().add(lblDni);
 		
 		btnIngreso = new JButton("Ingreso");
 		btnIngreso.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnIngreso.setBounds(545, 34, 127, 23);
+		btnIngreso.setBounds(545, 11, 127, 23);
 		getContentPane().add(btnIngreso);
 		
 		btnModificacion = new JButton("Modificacion");
 		btnModificacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnModificacion.setBounds(545, 59, 127, 23);
+		btnModificacion.setBounds(545, 38, 127, 23);
 		getContentPane().add(btnModificacion);
 		
 		btnConsulta = new JButton("Consulta");
 		btnConsulta.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnConsulta.setBounds(545, 84, 127, 23);
+		btnConsulta.setBounds(545, 63, 127, 23);
 		getContentPane().add(btnConsulta);
-		
-		btnEliminacion = new JButton("Eliminacion");
-		btnEliminacion.addActionListener(this);
-		btnEliminacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnEliminacion.setBounds(545, 110, 127, 23);
-		getContentPane().add(btnEliminacion);
 		
 		btnListado = new JButton("Listado");
 		btnListado.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnListado.setBounds(545, 135, 127, 23);
+		btnListado.setBounds(545, 112, 127, 23);
 		getContentPane().add(btnListado);
 		
 		txtApellidos = new JTextField();
@@ -125,12 +118,6 @@ public class DialogoClientes extends JDialog implements ActionListener {
 		txtApellidos.setBounds(101, 62, 209, 20);
 		getContentPane().add(txtApellidos);
 		txtApellidos.setColumns(10);
-		
-		txtDireccion = new JTextField();
-		txtDireccion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtDireccion.setColumns(10);
-		txtDireccion.setBounds(101, 87, 209, 20);
-		getContentPane().add(txtDireccion);
 		
 		txtNombres = new JTextField();
 		txtNombres.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -148,13 +135,13 @@ public class DialogoClientes extends JDialog implements ActionListener {
 		txtTelefono = new JTextField();
 		txtTelefono.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtTelefono.setColumns(10);
-		txtTelefono.setBounds(101, 112, 209, 20);
+		txtTelefono.setBounds(101, 85, 209, 20);
 		getContentPane().add(txtTelefono);
 		
 		txtDNI = new JTextField();
 		txtDNI.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtDNI.setColumns(10);
-		txtDNI.setBounds(101, 136, 209, 20);
+		txtDNI.setBounds(101, 110, 209, 20);
 		getContentPane().add(txtDNI);
 		
 		btnAceptar = new JButton("Aceptar");
@@ -162,16 +149,36 @@ public class DialogoClientes extends JDialog implements ActionListener {
 		btnAceptar.setBounds(219, 9, 89, 23);
 		getContentPane().add(btnAceptar);
 		
-		txtS = new TextArea();
-		txtS.setBounds(10, 412, 662, 206);
-		getContentPane().add(txtS);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(21, 173, 636, 219);
+		getContentPane().add(scrollPane);
+		
+		modelo = new DefaultTableModel();
+		modelo.addColumn("Código");
+		modelo.addColumn("Nombres");
+		modelo.addColumn("Apellidos");
+		modelo.addColumn("Teléfono");
+		modelo.addColumn("DNI");
+		
+		tblTabla = new JTable();
+		tblTabla.setFillsViewportHeight(true);
+		scrollPane.setViewportView(tblTabla);
+		tblTabla.setModel(modelo);
+		
+		JButton btnEliminacion = new JButton("Eliminaci\u00F3n");
+		btnEliminacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEliminacion.setBounds(547, 87, 124, 23);
+		getContentPane().add(btnEliminacion);
 
 	}
+	
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnEliminacion) {
-			actionPerformedBtnIngreso_3(e);
-		}
+		
 	}
-	protected void actionPerformedBtnIngreso_3(ActionEvent e) {
-	}
+	
+	/*En el Design activar los actionPerformed de cada botón para su desarrollo*/
+	
+
 }
+
+

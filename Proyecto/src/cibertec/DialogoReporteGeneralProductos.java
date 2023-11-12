@@ -7,6 +7,10 @@ import java.awt.TextArea;
 import javax.swing.JButton;
 
 public class DialogoReporteGeneralProductos extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private TextArea txtS;
 	private JButton btnListar;
 
@@ -40,7 +44,7 @@ public class DialogoReporteGeneralProductos extends JDialog {
 		txtS.setBounds(9, 11, 539, 502);
 		getContentPane().add(txtS);
 		
-		btnListar = new JButton("LISTAR\r\n");
+		btnListar = new JButton("Listar");
 		btnListar.setBounds(232, 522, 89, 23);
 		getContentPane().add(btnListar);
 

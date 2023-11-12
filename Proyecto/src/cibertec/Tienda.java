@@ -24,9 +24,6 @@ public class Tienda extends JFrame implements ActionListener {
 	private JMenuItem mntmReporteProductos;
 	private JMenu mnVentas;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -45,9 +42,6 @@ public class Tienda extends JFrame implements ActionListener {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Tienda() {
 		setTitle("Tienda 1.0");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,17 +54,17 @@ public class Tienda extends JFrame implements ActionListener {
 		mnMantenimiento.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		menuBar.add(mnMantenimiento);
 
-		mntmClientes = new JMenuItem("Clientes");
+		mntmClientes = new JMenuItem("Mantenimiento de clientes");
 		mntmClientes.addActionListener(this);
 
-		mntmVendedores = new JMenuItem("Vendedores");
+		mntmVendedores = new JMenuItem("Mantenimiento de vendedores");
 		mntmVendedores.addActionListener(this);
 		mntmVendedores.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		mnMantenimiento.add(mntmVendedores);
 		mntmClientes.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		mnMantenimiento.add(mntmClientes);
 
-		mntmProductos = new JMenuItem("Productos");
+		mntmProductos = new JMenuItem("Mantenimiento de productos");
 		mntmProductos.addActionListener(this);
 		mntmProductos.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		mnMantenimiento.add(mntmProductos);

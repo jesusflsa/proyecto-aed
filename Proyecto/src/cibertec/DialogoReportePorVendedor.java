@@ -5,8 +5,14 @@ import java.awt.EventQueue;
 import javax.swing.JDialog;
 import java.awt.TextArea;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DialogoReportePorVendedor extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private TextArea txtS;
 	private JButton btnListar;
 
@@ -40,7 +46,11 @@ public class DialogoReportePorVendedor extends JDialog {
 		txtS.setBounds(10, 10, 474, 541);
 		getContentPane().add(txtS);
 		
-		btnListar = new JButton("LISTAR\r\n");
+		btnListar = new JButton("Listar");
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnListar.setBounds(206, 561, 89, 23);
 		getContentPane().add(btnListar);
 

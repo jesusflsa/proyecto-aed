@@ -6,10 +6,16 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
-import java.awt.TextArea;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class DialogoProductos extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lblCodigo;
 	private JLabel lblDescripcion;
 	private JLabel lblPrecio;
@@ -22,7 +28,9 @@ public class DialogoProductos extends JDialog {
 	private JButton btnConsulta;
 	private JButton btnEliminacion;
 	private JButton btnListado;
-	private TextArea textArea;
+	private JScrollPane scrollPane;
+	private JTable tblTabla;
+	private DefaultTableModel modelo;
 
 	/**
 	 * Launch the application.
@@ -50,19 +58,19 @@ public class DialogoProductos extends JDialog {
 		setBounds(100, 100, 664, 464);
 		getContentPane().setLayout(null);
 		
-		lblCodigo = new JLabel("CODIGO:");
+		lblCodigo = new JLabel("C\u00F3digo");
 		lblCodigo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCodigo.setBounds(10, 11, 91, 14);
+		lblCodigo.setBounds(10, 11, 91, 17);
 		getContentPane().add(lblCodigo);
 		
-		lblDescripcion = new JLabel("DESCRIPCION:");
+		lblDescripcion = new JLabel("Descripci\u00F3n");
 		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDescripcion.setBounds(10, 36, 107, 14);
+		lblDescripcion.setBounds(10, 36, 107, 17);
 		getContentPane().add(lblDescripcion);
 		
-		lblPrecio = new JLabel("PRECIO:");
+		lblPrecio = new JLabel("Precio:");
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPrecio.setBounds(10, 64, 91, 14);
+		lblPrecio.setBounds(10, 64, 91, 17);
 		getContentPane().add(lblPrecio);
 		
 		txtDescripcion = new JTextField();
@@ -84,40 +92,53 @@ public class DialogoProductos extends JDialog {
 		txtPrecio.setBounds(111, 61, 141, 20);
 		getContentPane().add(txtPrecio);
 		
-		btnAceptar = new JButton("ACEPTAR");
+		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAceptar.setBounds(262, 9, 126, 23);
 		getContentPane().add(btnAceptar);
 		
-		btnIngreso = new JButton("INGRESO");
+		btnIngreso = new JButton("Ingreso");
 		btnIngreso.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnIngreso.setBounds(512, 9, 126, 23);
 		getContentPane().add(btnIngreso);
 		
-		btnModificacion = new JButton("MODIFICACION");
+		btnModificacion = new JButton("Modificaci\u00F3n");
 		btnModificacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnModificacion.setBounds(512, 39, 126, 23);
 		getContentPane().add(btnModificacion);
 		
-		btnConsulta = new JButton("CONSULTA");
+		btnConsulta = new JButton("Consulta");
 		btnConsulta.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnConsulta.setBounds(514, 70, 126, 23);
 		getContentPane().add(btnConsulta);
 		
-		btnEliminacion = new JButton("ELIMINACION");
+		btnEliminacion = new JButton("Eliminaci\u00F3n");
 		btnEliminacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEliminacion.setBounds(515, 100, 126, 23);
 		getContentPane().add(btnEliminacion);
 		
-		btnListado = new JButton("LISTADO");
+		btnListado = new JButton("Listado");
 		btnListado.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnListado.setBounds(515, 130, 126, 23);
 		getContentPane().add(btnListado);
 		
-		textArea = new TextArea();
-		textArea.setBounds(9, 159, 631, 257);
-		getContentPane().add(textArea);
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 164, 628, 250);
+		getContentPane().add(scrollPane);
+		
+		modelo = new DefaultTableModel();
+		modelo.addColumn("Código");
+		modelo.addColumn("Descripción");
+		modelo.addColumn("Precio");
+	
+		tblTabla = new JTable();
+		tblTabla.setFillsViewportHeight(true);
+		scrollPane.setViewportView(tblTabla);
+		tblTabla.setModel(modelo);
 
 	}
+	
+	/*En el Design activar los actionPerformed de cada botón para su desarrollo*/
+
 
 }
