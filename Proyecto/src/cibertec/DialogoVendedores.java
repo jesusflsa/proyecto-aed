@@ -44,9 +44,9 @@ public class DialogoVendedores extends JDialog implements ActionListener {
 	@SuppressWarnings("rawtypes")
 	private JComboBox cboCategoria;
 	private JButton btnBuscar;
-	private JButton btnModificacion;
+	private JButton btnModificar;
 	private JButton btnListar;
-	private JButton btnEliminacion;
+	private JButton btnEliminar;
 	private JButton btnCancelar;
 	private JButton btnAgregar;
 	private JSeparator separator;
@@ -147,21 +147,23 @@ public class DialogoVendedores extends JDialog implements ActionListener {
 		btnNuevo.setBounds(342, 5, 125, 23);
 		contentPanel.add(btnNuevo);
 
-		btnModificacion = new JButton("Modificaci\u00F3n");
-		btnModificacion.addActionListener(this);
-		btnModificacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnModificacion.setBounds(342, 33, 125, 23);
-		contentPanel.add(btnModificacion);
+		btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(this);
+		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnModificar.setBounds(342, 33, 125, 23);
+		contentPanel.add(btnModificar);
 
 		btnListar = new JButton("Listar");
+		btnListar.addActionListener(this);
 		btnListar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnListar.setBounds(342, 59, 125, 23);
 		contentPanel.add(btnListar);
 
-		btnEliminacion = new JButton("Eliminaci\u00F3n");
-		btnEliminacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnEliminacion.setBounds(476, 32, 125, 23);
-		contentPanel.add(btnEliminacion);
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(this);
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEliminar.setBounds(476, 32, 125, 23);
+		contentPanel.add(btnEliminar);
 
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(this);
@@ -171,7 +173,7 @@ public class DialogoVendedores extends JDialog implements ActionListener {
 
 		cboCategoria = new JComboBox();
 		cboCategoria.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		cboCategoria.setModel(new DefaultComboBoxModel(new String[] { "Pepito", "Pepito2", "Pepito3" }));
+		cboCategoria.setModel(new DefaultComboBoxModel(Tienda.VENDEDORES.categorias));
 		cboCategoria.setBounds(88, 31, 110, 22);
 		contentPanel.add(cboCategoria);
 
@@ -208,65 +210,41 @@ public class DialogoVendedores extends JDialog implements ActionListener {
 		contentPanel.add(btnAgregar);
 
 		Tienda.VENDEDORES.agregar(new Vendedor(2001, 0, "Juan", "Pérez", "123456789", "12345678A"));
-		Tienda.VENDEDORES.agregar(new Vendedor(2002, 1, "María", "López", "987654321", "87654321B"));
+		Tienda.VENDEDORES.agregar(new Vendedor(2002, 2, "María", "López", "987654321", "87654321B"));
 		Tienda.VENDEDORES.agregar(new Vendedor(2003, 1, "Carlos", "Gómez", "456789012", "76543210C"));
 		Tienda.VENDEDORES.agregar(new Vendedor(2004, 0, "Laura", "Martínez", "321654987", "65432109D"));
 		Tienda.VENDEDORES.agregar(new Vendedor(2005, 2, "Pedro", "Ramírez", "789012345", "54321098E"));
 		Tienda.VENDEDORES.agregar(new Vendedor(2006, 1, "Ana", "Sánchez", "210987654", "43210987F"));
 		Tienda.VENDEDORES.agregar(new Vendedor(2007, 1, "Miguel", "Torres", "876543210", "32109876G"));
-		Tienda.VENDEDORES.agregar(new Vendedor(2008, 0, "Elena", "Fernández", "543210987", "21098765H"));
+		Tienda.VENDEDORES.agregar(new Vendedor(2008, 2, "Elena", "Fernández", "543210987", "21098765H"));
 
+		iniciarVentana();
+
+	}
+
+	public void iniciarVentana() {
+		limpiar();
 		listar();
 		editar(false);
 		txtCodigo.setFocusable(true);
+		btnModificar.setEnabled(false);
+		btnAgregar.setEnabled(false);
+		btnEliminar.setEnabled(false);
 
 	}
 
 	public void editar(boolean value) {
-		if (value) {
-			txtCodigo.setEnabled(false);
-			btnBuscar.setEnabled(false);
-			btnListar.setEnabled(false);
-			btnNuevo.setEnabled(false);
+		txtCodigo.setEnabled(!value);
+		btnBuscar.setEnabled(!value);
+		btnListar.setEnabled(!value);
+		btnNuevo.setEnabled(!value);
 
-			btnCancelar.setEnabled(true);
-			cboCategoria.setEnabled(true);
-			txtNombres.setEnabled(true);
-			txtApellidos.setEnabled(true);
-			txtTelefono.setEnabled(true);
-			txtDNI.setEnabled(true);
-			btnAgregar.setEnabled(true);
-			btnModificacion.setEnabled(true);
-			btnEliminacion.setEnabled(true);
-
-		} else {
-			txtCodigo.setEnabled(true);
-			btnBuscar.setEnabled(true);
-			btnListar.setEnabled(true);
-			btnNuevo.setEnabled(true);
-
-			btnCancelar.setEnabled(false);
-			cboCategoria.setEnabled(false);
-			txtNombres.setEnabled(false);
-			txtApellidos.setEnabled(false);
-			txtTelefono.setEnabled(false);
-			txtDNI.setEnabled(false);
-			btnAgregar.setEnabled(false);
-			btnModificacion.setEnabled(false);
-			btnEliminacion.setEnabled(false);
-
-		}
-	}
-
-	public String obtenerCategoria(int index) {
-		switch (index) {
-		case 0:
-			return "Categoria 1";
-		case 1:
-			return "Categoria 2";
-		default:
-			return "Categoria 3";
-		}
+		btnCancelar.setEnabled(value);
+		cboCategoria.setEnabled(value);
+		txtNombres.setEnabled(value);
+		txtApellidos.setEnabled(value);
+		txtTelefono.setEnabled(value);
+		txtDNI.setEnabled(value);
 	}
 
 	public void limpiar() {
@@ -288,7 +266,7 @@ public class DialogoVendedores extends JDialog implements ActionListener {
 	}
 
 	public void agregarFila(Vendedor v) {
-		String categoria = obtenerCategoria(v.getCategoria());
+		String categoria = Tienda.VENDEDORES.nombreCategoria(v.getCategoria());
 		Object[] fila = { v.getCodigo(), categoria, v.getNombres(), v.getApellidos(), v.getTelefono(), v.getDni() };
 		modelo.addRow(fila);
 	}
@@ -332,8 +310,14 @@ public class DialogoVendedores extends JDialog implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnModificacion) {
-			actionPerformedBtnModificacion(e);
+		if (e.getSource() == btnEliminar) {
+			actionPerformedBtnEliminar(e);
+		}
+		if (e.getSource() == btnListar) {
+			actionPerformedBtnListar(e);
+		}
+		if (e.getSource() == btnModificar) {
+			actionPerformedBtnModificar(e);
 		}
 		if (e.getSource() == btnAgregar) {
 			actionPerformedBtnAgregar(e);
@@ -356,49 +340,94 @@ public class DialogoVendedores extends JDialog implements ActionListener {
 				modelo.setRowCount(0);
 				agregarFila(v);
 				mostrarDatos(v);
-				editar(true);
+
 				btnAgregar.setEnabled(false);
+				btnNuevo.setEnabled(false);
+				btnListar.setEnabled(false);
+
+				btnModificar.setEnabled(true);
+				btnEliminar.setEnabled(true);
+				btnCancelar.setEnabled(true);
+
 			} else {
 				JOptionPane.showMessageDialog(this, "No existe un vendedor con ese c\u00F3digo",
 						"C\u00F3digo no encontrado", JOptionPane.ERROR_MESSAGE);
 				txtCodigo.setText("");
 				txtCodigo.requestFocusInWindow();
 			}
+		} else {
+			JOptionPane.showMessageDialog(this, "Escribe un codigo para buscar");
 		}
 	}
 
 	protected void actionPerformedBtnNuevo(ActionEvent e) {
 		editar(true);
-		btnModificacion.setEnabled(false);
-		btnEliminacion.setEnabled(false);
+		btnAgregar.setEnabled(true);
+		btnListar.setEnabled(false);
+		btnNuevo.setEnabled(false);
 		txtCodigo.setText(Tienda.VENDEDORES.generarCodigo() + "");
 	}
 
 	protected void actionPerformedBtnCancelar(ActionEvent e) {
-		editar(false);
-		limpiar();
+		iniciarVentana();
 	}
 
 	protected void actionPerformedBtnAgregar(ActionEvent e) {
 
-		int codigo = leerCodigo();
-		int categoria = leerCategoria();
-		String nombres = leerNombres();
-		String apellidos = leerApellidos();
-		String telefono = leerTelefono();
-		String dni = leerDni();
+		if (leerNombres().length() != 0 && leerApellidos().length() != 0 && leerTelefono().length() != 0
+				&& leerDni().length() != 0) {
 
-		Vendedor v = new Vendedor(codigo, categoria, nombres, apellidos, telefono, dni);
-		Tienda.VENDEDORES.agregar(v);
+			Vendedor v = Tienda.VENDEDORES.buscar(leerCodigo());
+			if (v == null) {
+				Vendedor ven = new Vendedor(leerCodigo(), leerCategoria(), leerNombres(), leerApellidos(),
+						leerTelefono(), leerDni());
+				Tienda.VENDEDORES.agregar(ven);
+				JOptionPane.showMessageDialog(this, "Vendedor creado exitosamente");
+			} else {
+				v.setCategoria(leerCategoria());
+				v.setNombres(leerNombres());
+				v.setApellidos(leerApellidos());
+				v.setTelefono(leerTelefono());
+				v.setDni(leerDni());
 
-		JOptionPane.showMessageDialog(this, "Vendedor creado exitosamente", "Vendedor creado",
-				JOptionPane.DEFAULT_OPTION);
-
-		listar();
-		limpiar();
-		editar(false);
+				JOptionPane.showMessageDialog(this, "Vendedor modificado correctamente");
+			}
+			iniciarVentana();
+		} else {
+			JOptionPane.showMessageDialog(this, "Rellena todos los campos");
+			if (leerDni().length() == 0)
+				txtDNI.requestFocusInWindow();
+			if (leerTelefono().length() == 0)
+				txtTelefono.requestFocusInWindow();
+			if (leerApellidos().length() == 0)
+				txtApellidos.requestFocusInWindow();
+			if (leerNombres().length() == 0)
+				txtNombres.requestFocusInWindow();
+		}
 	}
 
-	protected void actionPerformedBtnModificacion(ActionEvent e) {
+	protected void actionPerformedBtnModificar(ActionEvent e) {
+		editar(true);
+		btnModificar.setEnabled(false);
+		btnEliminar.setEnabled(false);
+		btnAgregar.setEnabled(true);
+	}
+
+	protected void actionPerformedBtnListar(ActionEvent e) {
+		limpiar();
+		editar(false);
+		listar();
+	}
+
+	protected void actionPerformedBtnEliminar(ActionEvent e) {
+		int dialogResult = JOptionPane.showConfirmDialog(this, "Deseas eliminar el vendedor " + leerCodigo() + "?",
+				"Eliminar vendedor", JOptionPane.YES_NO_OPTION);
+		if (dialogResult == 0) {
+			Vendedor v = Tienda.VENDEDORES.buscar(leerCategoria());
+			Tienda.VENDEDORES.eliminar(v);
+			JOptionPane.showMessageDialog(this, "Vendedor eliminado");
+		}
+		iniciarVentana();
+
 	}
 }

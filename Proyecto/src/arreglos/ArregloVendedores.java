@@ -6,9 +6,14 @@ import clases.Vendedor;
 
 public class ArregloVendedores {
 	private ArrayList<Vendedor> arreglo;
+	public String[] categorias = { "Computadoras", "Electrodomesticos", "Componentes" };
 
 	public ArregloVendedores() {
 		arreglo = new ArrayList<Vendedor>();
+	}
+
+	public String nombreCategoria(int index) {
+		return categorias[index];
 	}
 
 	public Vendedor obtener(int posicion) {
