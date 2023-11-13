@@ -223,6 +223,7 @@ public class DialogoVendedores extends JDialog implements ActionListener {
 	}
 
 	public void iniciarVentana() {
+		modelo.setRowCount(0);
 		limpiar();
 		listar();
 		editar(false);
