@@ -6,7 +6,8 @@ import clases.Vendedor;
 
 public class ArregloVendedores {
 	private ArrayList<Vendedor> arreglo;
-	public String[] categorias = { "Computadoras", "Electrodomesticos", "Componentes" };
+	public String[] categorias = { "Asociado Junior", "Asociado Senior", "Supervisor", "Gerente Depto.",
+			"Gerente Tienda" };
 
 	public ArregloVendedores() {
 		arreglo = new ArrayList<Vendedor>();

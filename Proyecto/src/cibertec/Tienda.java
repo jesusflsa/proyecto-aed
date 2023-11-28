@@ -6,7 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import arreglos.ArregloCliente;
+import arreglos.ArregloFacturas;
+import arreglos.ArregloProductos;
 import arreglos.ArregloVendedores;
+import clases.Cliente;
+import clases.Producto;
+import clases.Vendedor;
 
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
@@ -121,6 +127,8 @@ public class Tienda extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		generarDatos();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -154,11 +162,46 @@ public class Tienda extends JFrame implements ActionListener {
 	}
 
 	public static ArregloVendedores VENDEDORES = new ArregloVendedores();
+	public static ArregloCliente CLIENTES = new ArregloCliente();
+	public static ArregloProductos PRODUCTOS = new ArregloProductos();
+	public static ArregloFacturas FACTURAS = new ArregloFacturas();
 
 	protected void actionPerformedMntmVendedores(ActionEvent e) {
 		DialogoVendedores d = new DialogoVendedores();
 		d.setVisible(true);
 		d.setLocationRelativeTo(this);
+	}
+
+	public void generarDatos() {
+		CLIENTES.agregar(new Cliente(1001, "Alejandro", "González", "92143657", "21436587"));
+        CLIENTES.agregar(new Cliente(1002, "Marina", "López", "97654321", "76543210"));
+        CLIENTES.agregar(new Cliente(1003, "Diego", "Hernández", "91987654", "19876543"));
+        CLIENTES.agregar(new Cliente(1004, "Catalina", "Rojas", "98765432", "87654321"));
+        CLIENTES.agregar(new Cliente(1005, "Gabriel", "Mendoza", "94321876", "43218765"));
+        CLIENTES.agregar(new Cliente(1006, "Isabel", "Vargas", "98901234", "89012345"));
+        CLIENTES.agregar(new Cliente(1007, "Santiago", "Ramírez", "93456789", "34567890"));
+        CLIENTES.agregar(new Cliente(1008, "Valentina", "Pérez", "91098765", "10987654"));
+		
+		VENDEDORES.agregar(new Vendedor(2001, 0, "Emma", "Richetti", "95271346", "51472983"));
+		VENDEDORES.agregar(new Vendedor(2002, 2, "Jessica", "Cicchini", "96432189", "82734156"));
+		VENDEDORES.agregar(new Vendedor(2003, 3, "Carlos", "Gómez", "99812345", "63984721"));
+		VENDEDORES.agregar(new Vendedor(2004, 4, "Fernanda", "Huamán", "97543201", "92817645"));
+		VENDEDORES.agregar(new Vendedor(2005, 2, "Pedro", "Ramírez", "94368972", "47582913"));
+		VENDEDORES.agregar(new Vendedor(2006, 3, "Ana", "Sánchez", "98921765", "36219874"));
+		VENDEDORES.agregar(new Vendedor(2007, 4, "Miguel", "Torres", "93450621", "84156239"));
+		VENDEDORES.agregar(new Vendedor(2008, 2, "Elena", "Fernández", "92198347", "75329814"));
+
+		PRODUCTOS.agregar(new Producto(3001, "Auriculares Inalámbricos con Cancelación de Ruido", 150.00));
+		PRODUCTOS.agregar(new Producto(3002, "Cámara de Seguridad Inteligente", 80.00));
+		PRODUCTOS.agregar(new Producto(3003, "Bicicleta Eléctrica Plegable", 900.00));
+		PRODUCTOS.agregar(new Producto(3004, "Kit de Herramientas para Reparación de Dispositivos Electrónicos", 30.00));
+		PRODUCTOS.agregar(new Producto(3005, "Smartwatch con Monitor de Actividad", 180.00));
+		PRODUCTOS.agregar(new Producto(3006, "Teclado Mecánico para Gaming", 80.00));
+		PRODUCTOS.agregar(new Producto(3007, "Impresora Multifuncional Inalámbrica", 200.00));
+		PRODUCTOS.agregar(new Producto(3008, "Mochila Antirrobo con Puerto USB", 50.00));
+		PRODUCTOS.agregar(new Producto(3019, "Altavoces Bluetooth Impermeables", 70.00));
+		PRODUCTOS.agregar(new Producto(3010, "Monitor Curvo de Alta Resolución", 350.00));
+		PRODUCTOS.agregar(new Producto(3011, "Cargador Inalámbrico Rápido", 25.00));
 	}
 
 	protected void actionPerformedMntmClientes(ActionEvent e) {
@@ -186,7 +229,7 @@ public class Tienda extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedMntmReporteVendedores(ActionEvent e) {
-		DialogoReportePorVendedor d = new DialogoReportePorVendedor();
+		DialogoReporteGeneralVendedores d = new DialogoReporteGeneralVendedores();
 		d.setVisible(true);
 		d.setLocationRelativeTo(this);
 	}
@@ -198,7 +241,7 @@ public class Tienda extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedMntmReportePorProducto(ActionEvent e) {
-		DialogoReporteGeneralProductos d = new DialogoReporteGeneralProductos();
+		DialogoReportePorProducto d = new DialogoReportePorProducto();
 		d.setVisible(true);
 		d.setLocationRelativeTo(this);
 	}

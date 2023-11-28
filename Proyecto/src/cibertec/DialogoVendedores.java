@@ -209,21 +209,12 @@ public class DialogoVendedores extends JDialog implements ActionListener {
 		btnAgregar.setBounds(476, 5, 125, 23);
 		contentPanel.add(btnAgregar);
 
-		Tienda.VENDEDORES.agregar(new Vendedor(2001, 0, "Juan", "Pérez", "123456789", "12345678A"));
-		Tienda.VENDEDORES.agregar(new Vendedor(2002, 2, "María", "López", "987654321", "87654321B"));
-		Tienda.VENDEDORES.agregar(new Vendedor(2003, 1, "Carlos", "Gómez", "456789012", "76543210C"));
-		Tienda.VENDEDORES.agregar(new Vendedor(2004, 0, "Laura", "Martínez", "321654987", "65432109D"));
-		Tienda.VENDEDORES.agregar(new Vendedor(2005, 2, "Pedro", "Ramírez", "789012345", "54321098E"));
-		Tienda.VENDEDORES.agregar(new Vendedor(2006, 1, "Ana", "Sánchez", "210987654", "43210987F"));
-		Tienda.VENDEDORES.agregar(new Vendedor(2007, 1, "Miguel", "Torres", "876543210", "32109876G"));
-		Tienda.VENDEDORES.agregar(new Vendedor(2008, 2, "Elena", "Fernández", "543210987", "21098765H"));
 
 		iniciarVentana();
 
 	}
 
 	public void iniciarVentana() {
-		modelo.setRowCount(0);
 		limpiar();
 		listar();
 		editar(false);
